@@ -1,5 +1,6 @@
-require 'net/http'
+require 'cgi'
 require 'jwt'
+require 'net/http'
 
 module ZephyrApi
   class CloudClient
