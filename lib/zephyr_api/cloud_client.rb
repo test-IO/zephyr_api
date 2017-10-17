@@ -34,9 +34,7 @@ module ZephyrApi
     def generate_jwt(method, uri)
       path_without_product_context = uri.path[URI(@base_url).path.length, uri.path.length]
 
-      complete_params = {} # Need to be implemented
-
-      digest = Digest::SHA256.hexdigest([method, path_without_product_context, canonicalize_query_string(complete_params)].join('&'))
+      digest = Digest::SHA256.hexdigest([method, path_without_product_context, canonicalize_query_string(uri.query)].join('&'))
       token_content = {
         iat: Time.now.to_i,
         exp: (Time.now + TOKEN_EXPIRATION_IN_SECONDS).to_i,
