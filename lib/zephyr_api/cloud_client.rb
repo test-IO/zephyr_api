@@ -22,7 +22,7 @@ module ZephyrApi
       jwt = generate_jwt('GET', uri)
       headers = {
         'Authorization' => "JWT #{jwt}",
-        'Content-Type' => 'application/json',
+        'Content-Type' => 'text/plain',
         'zapiAccessKey' => @access_key
       }
       request = Net::HTTP::Get.new(uri.request_uri, headers)
